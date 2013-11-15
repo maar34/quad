@@ -1,0 +1,4 @@
+../LOtoHIFI/2/22_12_sal_3.L.wav
+../LOtoHIFI/2/22_12_sal_3.R.wav
+../LOtoHIFI/2/22_12_sal_3.Ls.wav
+../LOtoHIFI/2/22_12_sal_3.Rs.wav

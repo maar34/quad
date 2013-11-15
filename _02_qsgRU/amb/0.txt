@@ -1,0 +1,4 @@
+../LOFI/1/20_08_vc_2.L.wav
+../LOFI/1/20_08_vc_2.R.wav
+../LOFI/1/20_08_vc_2.Ls.wav
+../LOFI/1/20_08_vc_2.Rs.wav

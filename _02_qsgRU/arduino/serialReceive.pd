@@ -1,0 +1,44 @@
+#N canvas 552 242 616 445 10;
+#X obj 100 102 cnv 15 98 38 empty empty empty 20 12 0 14 -4032 -66577
+0;
+#X obj 106 106 cnv 15 86 30 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X obj 154 120 tgl 15 0 empty empty prnt 18 8 0 10 -261682 -1 -1 0
+1;
+#X obj 175 166 spigot;
+#X obj 202 197 print serial;
+#X obj 355 86 route analog;
+#X obj 355 108 route 0 1 2 3 4 5;
+#X text 114 103 serialReceive;
+#X text 108 121 s0->s5;
+#X obj 359 298 s s0;
+#X obj 375 326 s s1;
+#X obj 391 351 s s2;
+#X obj 408 291 s s3;
+#X obj 424 316 s s4;
+#X obj 441 341 s s5;
+#X obj 356 62 arduino 3;
+#X obj 357 134 slowReverse;
+#X obj 405 135 slowReverse;
+#X obj 424 163 slowReverse;
+#X obj 436 187 slowReverse;
+#X obj 380 181 slowReverse;
+#X obj 368 157 slowReverse;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 16 0;
+#X connect 6 1 21 0;
+#X connect 6 2 20 0;
+#X connect 6 3 17 0;
+#X connect 6 4 18 0;
+#X connect 6 5 19 0;
+#X connect 15 0 5 0;
+#X connect 15 0 3 0;
+#X connect 16 0 9 0;
+#X connect 17 0 12 0;
+#X connect 18 0 13 0;
+#X connect 19 0 14 0;
+#X connect 20 0 11 0;
+#X connect 21 0 10 0;
+#X coords 0 -1 1 1 100 40 2 100 100;

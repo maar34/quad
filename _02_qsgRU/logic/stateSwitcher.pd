@@ -1,0 +1,27 @@
+#N canvas 0 22 450 300 10;
+#X obj 208 -123 r stateChange;
+#X obj 259 -72 switch;
+#X obj 242 -101 + 1;
+#X obj 209 -101 f 1;
+#X obj 210 -80 mod 2;
+#X obj 210 -58 + 1;
+#X obj 210 10 outlet;
+#X obj 317 -108 inlet;
+#X obj 357 -108 inlet;
+#X obj 61 -89 loadbang;
+#X floatatom 278 -35 5 0 0 0 - - -;
+#X obj 172 -49 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 80 -54 random 2;
+#X connect 0 0 3 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 1;
+#X connect 3 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 5 0 10 0;
+#X connect 7 0 1 1;
+#X connect 8 0 1 2;
+#X connect 9 0 12 0;
+#X connect 12 0 3 0;

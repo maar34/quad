@@ -1,0 +1,10 @@
+#N canvas 140 22 232 148 10;
+#X obj 55 2 r idF;
+#X obj 58 25 pack;
+#X obj 58 50 route \$1;
+#X obj 58 110 outlet;
+#X obj 97 3 r accelF;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 1 1;

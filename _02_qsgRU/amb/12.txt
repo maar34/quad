@@ -1,0 +1,4 @@
+../LOFI/3/53_24_frayBentos_1.L.wav
+../LOFI/3/53_24_frayBentos_1.R.wav
+../LOFI/3/53_24_frayBentos_1.Ls.wav
+../LOFI/3/53_24_frayBentos_1.Rs.wav

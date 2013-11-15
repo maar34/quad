@@ -1,0 +1,181 @@
+#N canvas 477 22 699 809 10;
+#X floatatom 39 213 10 1 10000 0 - - -;
+#X floatatom 133 444 10 20 20000 0 - - -;
+#X floatatom 235 669 5 0 100 0 - - -;
+#X msg 39 231 time \$1;
+#X msg 235 690 resonance \$1;
+#X floatatom 87 333 5 0 100 0 - - -;
+#X floatatom 332 202 5 0 200 0 - - -;
+#X floatatom 407 440 5 0 100 0 - - -;
+#X floatatom 363 330 5 0 50 0 - - -;
+#X msg 332 220 density \$1;
+#X floatatom 518 709 5 0 100 0 - - -;
+#X msg 456 545 octave \$1;
+#X msg 87 353 timeVariation \$1;
+#X msg 363 350 grainSize \$1;
+#X msg 407 461 grainStartVariation \$1;
+#X msg 518 730 grainReversal \$1;
+#X msg 498 638 octaveVariation \$1;
+#X obj 42 194 hsl 128 15 1 4999 1 0 empty bub_inittime empty -2 -8
+0 10 -228856 -1 -1 0 1;
+#X floatatom 177 563 5 0 200 0 - - -;
+#X obj 180 544 hsl 128 15 0 200 0 0 empty bub_initfb empty -2 -8 0
+10 -228856 -1 -1 12700 1;
+#X obj 90 314 hsl 128 15 0 99 0 0 empty bub_inittimevar empty -2 -8
+0 10 -228856 -1 -1 0 1;
+#X obj 145 426 hsl 128 15 20 20000 1 0 empty bub_initfilterFreq empty
+-2 -8 0 10 -228856 -1 -1 12700 1;
+#X obj 238 650 hsl 128 15 1 99 0 0 empty bub_initres empty -2 -8 0
+10 -228856 -1 -1 0 1;
+#X obj 366 311 hsl 128 15 0 50 0 0 empty bub_initgrainsize empty -2
+-8 0 10 -228856 -1 -1 2540 1;
+#X obj 335 183 hsl 128 15 0 200 0 0 empty bub_initdensity empty -2
+-8 0 10 -228856 -1 -1 5080 1;
+#X obj 410 421 hsl 128 15 0 99 0 0 empty bub_initgvar empty -2 -8 0
+10 -228856 -1 -1 0 1;
+#X obj 521 690 hsl 128 15 0 99 0 0 empty bub_initgrev empty -2 -8 0
+10 -228856 -1 -1 12700 1;
+#X msg 133 462 filterFreq \$1;
+#X msg 177 582 feedback \$1;
+#X text 85 294 0 - 100%;
+#X text 176 526 0 - 200%;
+#X text 331 165 0 - 200%;
+#X text 364 292 0 - 50%;
+#X text 408 401 0 - 100%;
+#X text 519 672 0 - 100%;
+#X text 38 175 1 - 10000 ms (log);
+#X text 130 409 20 - 20kHz (log);
+#X obj 456 505 hradio 15 1 0 9 empty bub_initoct empty 0 -8 0 10 -262144
+-1 -1 4;
+#X obj 456 523 - 4;
+#N canvas 79 22 1035 558 bubbler 0;
+#X text 19 160 time \, feedback \, filter freq \, resonance- these
+are identical in function to the same parameters in "+delay~". The
+only exception is that the range of time is from 20 milliseconds to
+10 seconds.;
+#X text 17 233 time variation - this will select a random delay time
+for each grain from time - (time vari * time) to time + (time vari
+* time). This control has a range from 0% to 100%.;
+#X text 15 294 density - this controls the number of grains present
+at any given moment. It varies from 0% to 200%. At 100% \, grains are
+created at a rate so that two grains are present (on average). This
+is done because each grain is enveloped \, and it is necessary to overlap
+grains for smooth audio.;
+#X text 17 391 grain size - this is the size of each grain as a percentage
+of the delay time. This control varies from 0% to 50%.;
+#X text 521 27 g start vari - this control varies from 0% to 100%.
+At 0% grains will be created at a fixed frequency (grain rate) dependent
+on the grain size and density \, for synchronous granular synthesis.
+When the g start vari is increased \, the grain start time will deviate
+from this fixed frequency.;
+#X text 519 280 grain reversal - this will randomly reverse the grain.
+At 0% \, none of the grains will be reversed \, at 100% \, all of the
+grains will be reversed. This is especially effective when the grain
+size and delay time is large.;
+#X text 522 230 octave variation - this will add a random octave pitch
+shift to each grain.;
+#X text 20 31 This is a granular delay. That is \, small or large bits
+of sound (grains) are read from the delay \, and are recombined before
+sending to the output and feedback. The grains of sound are given smooth
+envelopes \, so that they can be recombined without transient distortion.
+The start of the grain \, the delay in each grain \, the playback direction
+and the pitch of each grain can be randomized.;
+#X text 16 437 Dry/Delay volume-controls the volume of the original
+signal (dry) or the delayed signal (delay);
+#X text 16 480 Mix-controls the ratio of dry-delay in the output. Ranges
+from 0 to 100% (0% all dry \, 100% all delay). Adjust mix \, then adjust
+volumes as desired.;
+#X text 17 5 +bubbler~;
+#X text 522 127 pitch shift/octave - these controls give each grain
+a pitch shift. Pitch shifting is controlled via MIDI input to the right
+inlet \, given as a note/velocity pair. When multiple MIDI notes are
+held \, the pitch shift values are randomly selected from the collection
+for each grain. The octave value is added to the pitch shift.;
+#X text 520 362 12tet/just - this button sets the pitch shifting to
+12 tone equal temperament \, or to just intonation.;
+#X restore 553 46 pd bubbler details;
+#X obj 7 84 +bubbler~;
+#X obj 498 618 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 10 5 inlet~;
+#X obj 7 124 outlet~;
+#X obj 38 370 s bub\$1;
+#X obj 132 709 s bub\$1;
+#X obj 329 479 s bub\$1;
+#X obj 456 565 s bub\$1;
+#X obj 22 51 r bub\$1;
+#X obj 65 149 inlet;
+#X obj 87 267 inlet;
+#X obj 133 376 inlet;
+#X obj 333 148 inlet;
+#X obj 356 272 inlet;
+#X obj 401 383 inlet;
+#X obj 496 591 inlet;
+#X obj 526 660 inlet;
+#X text 234 632 0 - 100%;
+#X obj 110 102 r fx1ReturnLevel;
+#X obj 8 104 *~;
+#X msg 65 103 \$1 200;
+#X obj 34 104 line;
+#X obj 298 70 hsl 128 15 0 100 0 0 empty bub_initdelvol empty -2 -8
+0 10 -228856 -1 -1 12700 1;
+#X text 306 49 Delay Volume (dB);
+#X floatatom 457 70 5 0 100 0 - bub_delvol -;
+#X obj 305 6 loadbang;
+#X msg 308 29 100;
+#X obj 304 100 s bub\$1_delvol;
+#X obj 207 232 env~;
+#X floatatom 213 256 5 0 0 0 - - -;
+#X floatatom 118 122 5 0 0 0 - - -;
+#X connect 0 0 3 0;
+#X connect 1 0 27 0;
+#X connect 2 0 4 0;
+#X connect 3 0 44 0;
+#X connect 4 0 45 0;
+#X connect 5 0 12 0;
+#X connect 6 0 9 0;
+#X connect 7 0 14 0;
+#X connect 8 0 13 0;
+#X connect 9 0 46 0;
+#X connect 10 0 15 0;
+#X connect 11 0 47 0;
+#X connect 12 0 44 0;
+#X connect 13 0 46 0;
+#X connect 14 0 46 0;
+#X connect 15 0 47 0;
+#X connect 16 0 47 0;
+#X connect 17 0 0 0;
+#X connect 18 0 28 0;
+#X connect 19 0 18 0;
+#X connect 20 0 5 0;
+#X connect 21 0 1 0;
+#X connect 22 0 2 0;
+#X connect 23 0 8 0;
+#X connect 24 0 6 0;
+#X connect 25 0 7 0;
+#X connect 26 0 10 0;
+#X connect 27 0 45 0;
+#X connect 28 0 45 0;
+#X connect 37 0 38 0;
+#X connect 38 0 11 0;
+#X connect 40 0 59 0;
+#X connect 40 0 68 0;
+#X connect 41 0 16 0;
+#X connect 42 0 40 0;
+#X connect 48 0 40 0;
+#X connect 49 0 17 0;
+#X connect 50 0 20 0;
+#X connect 52 0 24 0;
+#X connect 53 0 23 0;
+#X connect 54 0 25 0;
+#X connect 55 0 41 0;
+#X connect 56 0 26 0;
+#X connect 58 0 60 0;
+#X connect 58 0 70 0;
+#X connect 59 0 43 0;
+#X connect 60 0 61 0;
+#X connect 61 0 59 1;
+#X connect 62 0 67 0;
+#X connect 65 0 66 0;
+#X connect 66 0 62 0;
+#X connect 68 0 69 0;

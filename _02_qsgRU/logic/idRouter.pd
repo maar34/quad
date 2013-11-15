@@ -1,0 +1,32 @@
+#N canvas 277 142 450 300 10;
+#X obj 33 23 r idFA;
+#X obj 86 23 r idFR;
+#X obj 33 73 route \$1;
+#X obj 33 155 outlet;
+#X text 273 90 argumento: fiducialID;
+#X text 271 105 salida ON OF;
+#X obj 112 117 tgl 20 0 empty empty empty 17 7 0 10 -4032 -258113 -1
+0 1;
+#X obj 156 22 r activeBank;
+#X obj 155 51 sel \$2;
+#X msg 152 72 1;
+#X msg 180 74 0;
+#X obj 34 101 spigot;
+#X obj 149 117 tgl 20 0 empty empty empty 17 7 0 10 -204786 -258113
+-1 1 1;
+#X obj 181 179 s bankSampOff\$1;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;
+#X connect 2 0 11 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 1;
+#X connect 9 0 12 0;
+#X connect 10 0 12 0;
+#X connect 10 0 11 1;
+#X connect 10 0 13 0;
+#X connect 10 0 6 0;
+#X connect 11 0 3 0;
+#X connect 11 0 6 0;
+#X coords 0 -1 1 1 85 40 1 100 100;

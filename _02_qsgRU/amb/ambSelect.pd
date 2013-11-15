@@ -1,0 +1,26 @@
+#N canvas 140 22 450 300 10;
+#X obj 108 180 f;
+#X obj 54 211 spigot;
+#X obj 74 132 expr 1-$f1;
+#X obj 205 166 select 0;
+#X obj 105 217 pipe 4000;
+#X obj 54 84 inlet;
+#X obj 172 88 inlet;
+#X obj 52 250 outlet;
+#X obj 207 132 r amb\$1State;
+#X floatatom 116 255 5 0 0 0 - - -;
+#X obj 34 165 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 4 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 2 0 10 0;
+#X connect 3 0 0 0;
+#X connect 4 0 7 0;
+#X connect 4 0 9 0;
+#X connect 5 0 1 0;
+#X connect 5 0 0 1;
+#X connect 6 0 0 1;
+#X connect 6 0 1 0;
+#X connect 8 0 3 0;
+#X connect 8 0 2 0;

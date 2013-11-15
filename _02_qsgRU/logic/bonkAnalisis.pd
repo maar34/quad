@@ -1,0 +1,115 @@
+#N canvas 339 120 1041 785 10;
+#X msg 345 6 bang;
+#X obj 344 167 bonk~;
+#X msg 344 70 print;
+#X msg 385 -136 mask 4 0.7;
+#X msg 344 44 debug 0;
+#X msg 344 97 print 1;
+#N canvas 660 173 579 589 templates 0;
+#X msg 76 197 learn 0;
+#X msg 76 227 forget;
+#X msg 76 257 write templates.txt;
+#X msg 76 287 read templates.txt;
+#X msg 76 107 debounce 0;
+#X msg 76 137 learn 10;
+#X obj 62 431 outlet;
+#X text 155 133 Forget all templates and start learning new ones. The
+argument gives the number of times you will hit each instrument (10
+recommended.) Turn on the output volume above for audible feedback
+as you train Bonk. "Learn 0" exits learn mode.;
+#X text 155 217 Forget the last template. In Learn mode \, use "forget"
+to erase and record over a template.;
+#X text 220 253 Write templates to a file in text-editable format.
+;
+#X text 221 283 Read templates from a file.;
+#X text 157 104 Minimum time (msec) between attacks in learn mode;
+#X connect 0 0 6 0;
+#X connect 1 0 6 0;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 4 0 6 0;
+#X connect 5 0 6 0;
+#X restore 361 134 pd templates;
+#X msg 385 -101 attack-frames 1;
+#X msg 385 -46 spew 0;
+#X msg 385 -19 useloudness 0;
+#X msg 385 -162 thresh 5 10;
+#X text 478 22 Bonk's two outputs are the raw spectrum of the attack
+(provided as a list of 11 numbers giving the signal "loudness" in the
+11 frequency bands used) \, and the "cooked" output which gives only
+an instrument number (counting up from zero) and a "velocity". This
+"velocity" is the sum of the square roots of the amplitudes of the
+bands \, normalized so that 100 is an attack of amplitude of about
+1 The instrument number is significant only if Bonk has a "template
+set" in memory.;
+#X obj 220 269 unpack f f f f f f f f f f f;
+#X obj 159 294 mavg 30;
+#X obj 172 322 mavg 30;
+#X obj 183 351 mavg 30;
+#X obj 192 376 mavg 30;
+#X obj 281 294 mavg 30;
+#X obj 287 312 mavg 30;
+#X obj 300 334 mavg 30;
+#X obj 306 354 mavg 30;
+#X obj 353 295 mavg 30;
+#X obj 368 318 mavg 30;
+#X obj 385 341 mavg 30;
+#X obj 344 195 spigot;
+#X obj 393 196 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 344 225 print raw;
+#X msg 387 -73 minvel 5;
+#X obj 173 405 mavg 10;
+#X obj 291 390 mavg 10;
+#X obj 376 366 mavg 10;
+#X obj 177 470 outlet Lo;
+#X obj 288 470 outlet Mid;
+#X obj 377 475 outlet HI;
+#X obj 110 473 s loBonk;
+#X obj 279 497 s midBonk;
+#X obj 400 507 s hiBonk;
+#X obj 137 126 catch~ mastAnalysis;
+#X connect 0 0 1 0;
+#X connect 1 0 12 0;
+#X connect 1 0 24 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 1 0;
+#X connect 10 0 1 0;
+#X connect 12 0 13 0;
+#X connect 12 1 14 0;
+#X connect 12 2 15 0;
+#X connect 12 3 16 0;
+#X connect 12 4 17 0;
+#X connect 12 5 18 0;
+#X connect 12 6 19 0;
+#X connect 12 7 20 0;
+#X connect 12 8 21 0;
+#X connect 12 9 22 0;
+#X connect 12 10 23 0;
+#X connect 13 0 28 0;
+#X connect 14 0 28 0;
+#X connect 15 0 28 0;
+#X connect 16 0 28 0;
+#X connect 17 0 29 0;
+#X connect 18 0 29 0;
+#X connect 19 0 29 0;
+#X connect 20 0 29 0;
+#X connect 21 0 30 0;
+#X connect 22 0 30 0;
+#X connect 23 0 30 0;
+#X connect 24 0 26 0;
+#X connect 25 0 24 1;
+#X connect 27 0 1 0;
+#X connect 28 0 34 0;
+#X connect 28 0 31 0;
+#X connect 29 0 32 0;
+#X connect 29 0 35 0;
+#X connect 30 0 33 0;
+#X connect 30 0 36 0;
+#X connect 37 0 1 0;

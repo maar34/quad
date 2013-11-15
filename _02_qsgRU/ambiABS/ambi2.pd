@@ -1,0 +1,10 @@
+#N canvas 925 728 234 184 10;
+#X declare -lib iem_ambi -lib iemmatrix;
+#X obj 20 56 r dp;
+#X obj 22 77 route \$1;
+#X obj 121 63 catch~ sig\$1;
+#X obj 24 108 simpleAmbiEncoder2;
+#X text 58 16 canales para la voz;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 3 1;

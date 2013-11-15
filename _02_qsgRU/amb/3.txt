@@ -1,0 +1,4 @@
+../LOtoHIFI/1/18_06_BU_2.L.wav
+../LOtoHIFI/1/18_06_BU_2.R.wav
+../LOtoHIFI/1/18_06_BU_2.Ls.wav
+../LOtoHIFI/1/18_06_BU_2.Rs.wav

@@ -1,0 +1,4 @@
+../LOtoHIFI/2/34_15_saladero_5.L.wav
+../LOtoHIFI/2/34_15_saladero_5.R.wav
+../LOtoHIFI/2/34_15_saladero_5.Ls.wav
+../LOtoHIFI/2/34_15_saladero_5.Rs.wav

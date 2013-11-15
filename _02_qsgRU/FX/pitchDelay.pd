@@ -1,0 +1,172 @@
+#N canvas 494 118 825 594 10;
+#X floatatom 51 247 5 1 5000 0 - - -;
+#X floatatom 456 374 5 0 200 0 - - -;
+#X floatatom 309 375 5 0 100 0 - - -;
+#X msg 51 265 time \$1;
+#X msg 456 392 feedback \$1;
+#X msg 505 273 octave \$1;
+#X msg 309 393 loopDepth \$1;
+#X msg 219 289 pitchFactor \$1;
+#X obj 223 227 hsl 128 15 0 34 0 0 empty pit_pitfact empty -2 -8 0
+10 -228856 -1 -1 0 1;
+#X obj 54 231 hsl 128 15 1 5000 1 0 empty pit_time empty -2 -8 0 10
+-228856 -1 -1 3813 1;
+#N canvas 154 27 514 538 control 0;
+#X text 15 45 time - the delay time. Since the pitch-shifting effect
+is based on modulating the delay time \, it has a higher fidelity when
+the delay time is higher.;
+#X text 13 259 loop depth - this controls the amount of delay line
+which is used for pitch-shifting.;
+#X text 9 301 Dry/Delay volume-controls the volume of the original
+signal (dry) or the delayed signal (delay);
+#X text 13 139 feedback - the same feedback with saturation from +delay~.
+This allows interesting effects like a circle of fifths delay.;
+#X text 16 104 pitch shift - this knob selects ratios and equal tempered
+;
+#X text 14 198 octave - the control adds or subtracts a number of octaves
+to or from the pitch shift value. It varies from -3 to 3 \, and at
+extremes will give very distorted pitch-shifting.;
+#X text 19 14 +pitchdelay~;
+#X text 6 357 Mix-controls the ratio of dry-delay in the output. Ranges
+from 0 to 100% (0% all dry \, 100% all delay). Adjust mix \, then adjust
+volumes as desired.;
+#X text 7 412 Pitch Factor- This controls by how much the pitch is
+shifted. The controls have equal tempered intervals (minor second major
+second etc) with just intonation ratios in between.;
+#X restore 493 160 pd control details;
+#X obj 459 358 hsl 128 15 0 200 0 0 empty pit_fb empty -2 -8 0 10 -228856
+-1 -1 0 1;
+#X obj 312 359 hsl 128 15 10 100 0 0 empty pit_lpdepth empty -2 -8
+0 10 -228856 -1 -1 2117 1;
+#X text 454 343 0 - 200%;
+#X text 49 213 0 - 5000 ms (log);
+#X obj 219 246 int;
+#X symbolatom 219 209 12 0 0 0 - label -;
+#N canvas 624 151 656 333 label 0;
+#X obj 117 188 list;
+#X obj 117 209 list split 1;
+#X obj 77 83 t b f f b;
+#X obj 117 238 list split 1;
+#X obj 77 63 + 1;
+#X obj 238 220 - 1;
+#X obj 77 35 inlet;
+#X obj 163 264 s label;
+#X msg 146 106 Unison Minor_2nd 16/15 10/9 Major_2nd 9/8 8/7 7/6 Minor_3rd
+6/5 5/4 Major_3rd 9/7 4/3 Perfect_4th 7/5 Tritone 10/7 Perfect_5th
+3/2 14/9 11/7 Minor_6th 8/5 5/3 Major_6th 12/7 7/4 16/9 Minor_7th 9/5
+13/7 15/8 Major_7th Octave;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 2 1 1 1;
+#X connect 2 2 5 0;
+#X connect 2 3 8 0;
+#X connect 3 1 7 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 1;
+#X connect 6 0 4 0;
+#X connect 8 0 0 1;
+#X restore 231 267 pd label;
+#X obj 6 110 +pitchdelay~;
+#X text 307 341 10 - 100%;
+#X obj 505 229 hradio 15 1 0 7 empty octave-set empty 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 505 249 - 3;
+#X floatatom 159 267 5 0 0 0 - - -;
+#X floatatom 174 304 5 0 0 0 - - -;
+#X obj 6 155 outlet~;
+#X obj 8 33 inlet~;
+#X obj 49 183 inlet;
+#X obj 220 184 inlet;
+#X obj 312 320 inlet;
+#X obj 445 327 inlet;
+#X obj 35 63 r pitchdel\$1;
+#X obj 51 286 s pitchdel\$1;
+#X obj 221 317 s pitchdel\$1;
+#X obj 309 414 s pitchdel\$1;
+#X obj 456 413 s pitchdel\$1;
+#X obj 506 294 s pitchdel\$1;
+#X obj 6 131 *~;
+#X msg 63 130 \$1 200;
+#X obj 32 131 line;
+#X obj 108 129 r fx2ReturnLevel;
+#N canvas 271 344 260 170 map1 0;
+#X obj 83 129 outlet;
+#X obj 83 104 + 1;
+#X obj 83 48 ../logic/sinTransform 25;
+#X obj 83 17 ../osc/fRouterSpeed 16;
+#X obj 83 79 * 4999;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X restore 110 169 pd map1;
+#N canvas 271 344 260 170 map2 0;
+#X obj 83 129 outlet;
+#X obj 83 17 ../osc/fRouterX 16;
+#X obj 83 79 * 30;
+#X obj 83 103 + 10;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X restore 362 305 pd map2;
+#N canvas 271 344 260 170 map3 0;
+#X obj 83 129 outlet;
+#X obj 204 6 loadbang;
+#X msg 204 26 0;
+#X obj 83 17 ../osc/fRouterY 16;
+#X obj 83 49 ../logic/sinTransform 35;
+#X obj 83 79 * 30;
+#X connect 1 0 2 0;
+#X connect 2 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X restore 308 95 pd map3;
+#N canvas 271 344 260 170 map0 0;
+#X obj 83 129 outlet;
+#X obj 83 17 ../osc/fRouterAccel 39;
+#X obj 83 104 + 2.1;
+#X obj 83 79 * 31.9;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X restore 278 174 pd map0;
+#N canvas 271 344 260 170 map3 0;
+#X obj 83 129 outlet;
+#X obj 83 17 ../osc/fRouterX 16;
+#X obj 83 79 * 30;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X restore 500 319 pd map3;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 6 0;
+#X connect 3 0 31 0;
+#X connect 4 0 34 0;
+#X connect 5 0 35 0;
+#X connect 6 0 33 0;
+#X connect 7 0 32 0;
+#X connect 8 0 15 0;
+#X connect 8 0 22 0;
+#X connect 9 0 0 0;
+#X connect 11 0 1 0;
+#X connect 12 0 2 0;
+#X connect 15 0 7 0;
+#X connect 15 0 17 0;
+#X connect 15 0 23 0;
+#X connect 18 0 36 0;
+#X connect 20 0 21 0;
+#X connect 21 0 5 0;
+#X connect 25 0 18 0;
+#X connect 26 0 9 0;
+#X connect 27 0 8 0;
+#X connect 28 0 12 0;
+#X connect 29 0 11 0;
+#X connect 30 0 18 0;
+#X connect 36 0 24 0;
+#X connect 37 0 38 0;
+#X connect 38 0 36 1;
+#X connect 39 0 37 0;
+#X connect 40 0 9 0;
+#X connect 43 0 8 0;

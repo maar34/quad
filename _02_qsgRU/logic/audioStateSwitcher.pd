@@ -1,0 +1,27 @@
+#N canvas 597 189 450 300 10;
+#X obj 102 -114 r stateChange;
+#X obj 136 -92 + 1;
+#X obj 103 -92 f 1;
+#X obj 104 -71 mod 2;
+#X obj 104 -49 + 1;
+#X obj 24 -82 loadbang;
+#X floatatom 172 -26 5 0 0 0 - - -;
+#X obj 66 -40 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 91 -6 inlet~;
+#X obj 91 80 outlet~;
+#X obj 264 79 outlet~;
+#X obj 95 24 expr~ if ( $f2 == 1 \, $v1 \, 0) \; if ( $f2 == 2 \, $v1
+\, 0) \;;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 2 0;
+#X connect 6 0 11 1;
+#X connect 7 0 2 0;
+#X connect 8 0 11 0;
+#X connect 11 0 9 0;
+#X connect 11 1 10 0;

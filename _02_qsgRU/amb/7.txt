@@ -1,0 +1,7 @@
+../LOFI/2/compresorAfe.L.wav
+
+../LOFI/2/compresorAfe.R.wav
+
+../LOFI/2/compresorAfe.Ls.wav
+
+../LOFI/2/compresorAfe.Rs.wav

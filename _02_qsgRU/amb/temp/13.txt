@@ -1,0 +1,4 @@
+../LOFI/3/56_26_nvaPalmira_1.L.wav
+../LOFI/3/56_26_nvaPalmira_1.R.wav
+../LOFI/3/56_26_nvaPalmira_1.Ls.wav
+../LOFI/3/56_26_nvaPalmira_1.Rs.wav

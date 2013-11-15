@@ -1,0 +1,7 @@
+../LOFI/2/27_13_salGde_1.L.wav
+
+../LOFI/2/27_13_salGde_1.R.wav
+
+../LOFI/2/27_13_salGde_1.Ls.wav
+
+../LOFI/2/27_13_salGde_1.Rs.wav

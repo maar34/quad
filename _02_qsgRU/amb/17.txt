@@ -1,0 +1,4 @@
+../HIFI/3/59_27_nvaPalmira_4.L.wav
+../HIFI/3/59_27_nvaPalmira_4.R.wav
+../HIFI/3/59_27_nvaPalmira_4.Ls.wav
+../HIFI/3/59_27_nvaPalmira_4.Rs.wav

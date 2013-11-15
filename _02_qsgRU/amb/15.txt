@@ -1,0 +1,4 @@
+../LOtoHIFI/3/52_24_frayBentos_2.L.wav
+../LOtoHIFI/3/52_24_frayBentos_2.R.wav
+../LOtoHIFI/3/52_24_frayBentos_2.Ls.wav
+../LOtoHIFI/3/52_24_frayBentos_2.Rs.wav

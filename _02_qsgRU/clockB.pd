@@ -1,0 +1,13 @@
+#N canvas 0 22 678 413 10;
+#X text 174 160 m;
+#X text 213 161 s;
+#X obj 390 105 nbx 2 150 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+120 -228856 -4160 -1 5 256;
+#X obj 104 105 nbx 2 150 -1e+37 1e+37 0 0 empty empty empty 0 -8 0
+120 -228856 -258113 -258113 1 256;
+#X obj 148 78 unpack;
+#X obj 160 15 r logicTime;
+#X connect 4 0 2 0;
+#X connect 4 1 3 0;
+#X connect 5 0 4 0;
+#X coords 0 -1 1 1 600 180 2 100 100;
